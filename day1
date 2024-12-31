@@ -1,0 +1,25 @@
+def calculate():
+    answersum = 0
+    frequencies = []
+    keeplooping = True
+    i = 0
+    with open('day1.txt') as f:
+        data = f.read().splitlines()
+    while keeplooping:
+        for line in data:
+            operand = line[0]
+            if operand == "+":
+                answersum += int(line[1::])
+            else:
+                answersum -= int(line[1::])
+            frequencies.append(answersum)
+            if frequencies.count(answersum) == 2:
+                keeplooping = False
+                if i > 1:
+                    break
+        if i == 0:
+            print(answersum)
+        i += 1
+    print(answersum)
+
+calculate()
